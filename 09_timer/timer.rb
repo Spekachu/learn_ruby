@@ -1,30 +1,13 @@
 class Timer
+    attr_accessor :seconds
+
     def initialize
-        @seconds = 0
+    @seconds = 0
     end
-    def seconds
-        @seconds 
-    end
-    def seconds=(num)
-        @seconds = num       
-    end
+
     def time_string
-      res=[]
-      tt=@seconds.div(3600)
-      if tt<10
-         tt = '0' + tt.to_s
-      end
-      res.push(tt)
-      tt=(@seconds-@seconds.div(3600)*3600).div(60)
-      if tt<10
-         tt = '0' + tt.to_s
-      end
-         res.push(tt)
-         tt=@seconds-@seconds.div(3600)*3600-((@seconds-@seconds.div(3600)*3600).div(60))*60
-      if tt<10
-         tt = '0' + tt.to_s
-      end
-  res.push(tt)
-  res.join(':')
-  end
+    hours = @seconds/3600
+    remainder = @seconds%3600
+    sprintf("%02d:%02d:%02d", hours, remainder/60, remainder%60)
+    end
 end
